@@ -11,8 +11,11 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.ncrdesarrollo.popularmoviestmbd.R;
+import com.ncrdesarrollo.popularmoviestmbd.databinding.FragmentMovieDetailBinding;
 
 public class MovieDetailFragment extends Fragment {
+
+    private FragmentMovieDetailBinding binding;
 
     public MovieDetailFragment() {
         // Required empty public constructor
@@ -22,7 +25,9 @@ public class MovieDetailFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_movie_detail, container, false);
+        binding = FragmentMovieDetailBinding.inflate(inflater, container, false);
+        View view = binding.getRoot();
+        return view;
     }
 
     @Override
