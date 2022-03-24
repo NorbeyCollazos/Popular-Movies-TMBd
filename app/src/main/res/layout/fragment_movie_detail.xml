@@ -6,7 +6,7 @@
     tools:context=".views.fragments.MovieDetailFragment"
     android:background="@color/color_background">
 
-    <LinearLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
@@ -22,31 +22,53 @@
             android:textColor="@color/color_titles"/>
 
         <ImageView
-            android:layout_width="match_parent"
-            android:layout_height="190dp"
-            android:src="@mipmap/ic_launcher"
             android:id="@+id/image"
-            android:scaleType="fitCenter"/>
+            android:layout_width="match_parent"
+            android:layout_height="230dp"
+            android:layout_below="@+id/tvTitle"
+            android:scaleType="centerCrop"
+            tools:src="@mipmap/ic_launcher" />
 
         <TextView
+            android:id="@+id/tvD"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/descripci_n"
             android:textStyle="bold"
             android:textSize="@dimen/sise_subtitle"
             android:padding="@dimen/padding_16"
-            android:textColor="@color/color_titles"/>
+            android:textColor="@color/color_titles"
+            android:layout_below="@+id/image"/>
 
         <TextView
             android:id="@+id/tvDescription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Descripción"
+            tools:text="Descripción"
             android:textSize="@dimen/sise_text"
             android:paddingHorizontal="@dimen/padding_16"
             android:paddingVertical="10dp"
-            android:textColor="@color/color_text"/>
+            android:textColor="@color/color_text"
+            android:layout_below="@+id/tvD"/>
 
-    </LinearLayout>
+        <ProgressBar
+            android:id="@+id/progress_circular"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"/>
+
+        <Button
+            android:id="@+id/btnReinit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/color_titles"
+            android:textColor="@color/color_text"
+            android:text="Reintentar"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:visibility="gone"/>
+
+    </RelativeLayout>
 
 </androidx.core.widget.NestedScrollView>

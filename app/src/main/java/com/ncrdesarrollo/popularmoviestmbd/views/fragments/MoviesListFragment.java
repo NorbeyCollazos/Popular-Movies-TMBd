@@ -54,9 +54,6 @@ public class MoviesListFragment extends Fragment implements IMovieList.View {
 
         presenter = new MovieListPresenter();
 
-        presenter.setView(this);
-        presenter.loadData();
-
         adapter = new MovieAdapter(movieList);
         binding.rvMoviesList.setAdapter(adapter);
         binding.rvMoviesList.setLayoutManager(new GridLayoutManager(getContext(), 3));
@@ -73,11 +70,39 @@ public class MoviesListFragment extends Fragment implements IMovieList.View {
             }
         });
 
+        binding.btnReinit.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.loadData();
+            }
+        });
+
+
     }
 
     @Override
     public void onResume() {
         super.onResume();
+
+        presenter.setView(this);
+        presenter.loadData();
+    }
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        presenter.onDestroy();
+        movieList.clear();
+        adapter.notifyDataSetChanged();
+
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        presenter.onDestroy();
+        movieList.clear();
+        adapter.notifyDataSetChanged();
     }
 
     @Override
@@ -99,5 +124,15 @@ public class MoviesListFragment extends Fragment implements IMovieList.View {
     @Override
     public void hideProgress() {
         binding.progressCircular.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void showBtnReinit() {
+        binding.btnReinit.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void hideBtnReinit() {
+        binding.btnReinit.setVisibility(View.GONE);
     }
 }

@@ -21,7 +21,8 @@ public class MovieListPresenter implements IMovieList.Presenter {
 
     @Override
     public void loadData() {
-        Log.i("TAG", "loadData");
+        view.hideBtnReinit();
+        view.showProgress();
         model.resultMovieList().enqueue(new Callback<Movie>() {
             @Override
             public void onResponse(Call<Movie> call, Response<Movie> response) {
@@ -34,6 +35,7 @@ public class MovieListPresenter implements IMovieList.Presenter {
                     }
                 }else {
                     view.showMesage("Ocurripo un error");
+                    view.showBtnReinit();
                 }
             }
 
@@ -42,6 +44,7 @@ public class MovieListPresenter implements IMovieList.Presenter {
                 Log.i("TAG", t.getMessage());
                 view.showMesage("Ocurrió un error");
                 view.hideProgress();
+                view.showBtnReinit();
             }
         });
     }
@@ -49,5 +52,10 @@ public class MovieListPresenter implements IMovieList.Presenter {
     @Override
     public void setView(IMovieList.View view) {
         this.view = view;
+    }
+
+    @Override
+    public void onDestroy() {
+        this.view = null;
     }
 }

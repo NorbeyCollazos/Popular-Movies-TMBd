@@ -1,15 +1,14 @@
 package com.ncrdesarrollo.popularmoviestmbd.interfaces;
 
 import com.ncrdesarrollo.popularmoviestmbd.model.pojo.Movie;
-
-import java.util.List;
+import com.ncrdesarrollo.popularmoviestmbd.model.pojo.Results;
 
 import retrofit2.Call;
 
-public interface IMovieList {
+public interface IMovieDetail {
 
     interface View{
-        void updateData(Movie movie);
+        void dataDetailMovie(Results results);
         void showMesage(String str);
         void showProgress();
         void hideProgress();
@@ -19,12 +18,12 @@ public interface IMovieList {
 
     interface Presenter{
         void loadData();
-        void setView(IMovieList.View view);
+        void setView(IMovieDetail.View view);
         void onDestroy();
     }
 
     interface Model{
-        Call<Movie> resultMovieList();
+        Call<Results> resultMovieData();
     }
 
 }

@@ -7,7 +7,14 @@ import java.util.List;
 
 import retrofit2.Call;
 
-public interface Repository {
+public interface IRepository {
 
-    Call<Movie> getList();
+    interface ListMovie{
+        Call<Movie> getList();
+    }
+
+    interface detailMovie{
+        Call<Results> detailMovie();
+    }
+
 }
