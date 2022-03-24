@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import com.ncrdesarrollo.popularmoviestmbd.R;
 import com.ncrdesarrollo.popularmoviestmbd.databinding.FragmentMovieDetailBinding;
@@ -16,6 +17,7 @@ import com.ncrdesarrollo.popularmoviestmbd.databinding.FragmentMovieDetailBindin
 public class MovieDetailFragment extends Fragment {
 
     private FragmentMovieDetailBinding binding;
+    private String idPelicula;
 
     public MovieDetailFragment() {
         // Required empty public constructor
@@ -33,5 +35,8 @@ public class MovieDetailFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        idPelicula = getArguments().getString("id");
+        Toast.makeText(getContext(), idPelicula, Toast.LENGTH_SHORT).show();
     }
 }
