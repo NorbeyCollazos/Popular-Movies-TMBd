@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.ncrdesarrollo.popularmoviestmbd.R;
+import com.ncrdesarrollo.popularmoviestmbd.model.http.Vars;
 import com.ncrdesarrollo.popularmoviestmbd.model.pojo.Movie;
 
 import java.util.List;
@@ -39,7 +40,7 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.viewHolder> 
         Movie movie = movieList.get(position);
         Log.i("TAG2", movie.getResults().get(position).getTitle());
         Glide.with(holder.imageView.getContext())
-                .load("https://image.tmdb.org/t/p/w500"+movie.getResults().get(position).getPoster_path())
+                .load(Vars.URL_BASE_IMG+movie.getResults().get(position).getPoster_path())
                 .into(holder.imageView);
 
     }

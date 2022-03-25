@@ -34,7 +34,7 @@ public class MovieDetailPresenter implements IMovieDetail.Presenter {
                     Log.i("DATA", results.getTitle());
                     view.dataDetailMovie(results);
                 }else{
-                    view.showMesage("error");
+                    view.showMesage("error"+response.code());
                     view.showBtnReinit();
                 }
             }

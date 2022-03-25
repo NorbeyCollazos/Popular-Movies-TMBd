@@ -12,9 +12,9 @@ import retrofit2.http.Query;
 
 public interface MoviesApiService {
 
-    @GET("movie/popular?api_key=ea0b061bc609cf004a8c467e95c24ce1&language=es-ES")
-    Call<Movie> getListMovies();
+    @GET("movie/popular")
+    Call<Movie> getListMovies(@Query("api_key") String api_key, @Query("language") String languaje );
 
-    @GET("movie/{movie_id}?api_key=ea0b061bc609cf004a8c467e95c24ce1&language=es-ES")
-    Call<Results> getDetail(@Path("movie_id") String movie_id);
+    @GET("movie/{movie_id}")
+    Call<Results> getDetail(@Path("movie_id") String movie_id, @Query("api_key") String api_key, @Query("language") String languaje );
 }

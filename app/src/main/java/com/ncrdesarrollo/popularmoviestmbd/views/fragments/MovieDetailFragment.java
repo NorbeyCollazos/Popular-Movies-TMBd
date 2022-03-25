@@ -15,6 +15,7 @@ import com.bumptech.glide.Glide;
 import com.ncrdesarrollo.popularmoviestmbd.R;
 import com.ncrdesarrollo.popularmoviestmbd.databinding.FragmentMovieDetailBinding;
 import com.ncrdesarrollo.popularmoviestmbd.interfaces.IMovieDetail;
+import com.ncrdesarrollo.popularmoviestmbd.model.http.Vars;
 import com.ncrdesarrollo.popularmoviestmbd.model.pojo.Results;
 import com.ncrdesarrollo.popularmoviestmbd.presenter.MovieDetailPresenter;
 
@@ -81,7 +82,7 @@ public class MovieDetailFragment extends Fragment implements IMovieDetail.View {
         binding.tvDescription.setText(results.getOverview());
 
         Glide.with(getContext())
-                .load("https://image.tmdb.org/t/p/w500"+results.getPoster_path())
+                .load(Vars.URL_BASE_IMG+results.getPoster_path())
                 .into(binding.image);
     }
 
